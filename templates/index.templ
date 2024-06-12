@@ -1,0 +1,30 @@
+package templates
+
+import "github.com/Sourjaya/todo_htmx/templates/common"
+import "github.com/Sourjaya/todo_htmx/templates/components"
+import "github.com/Sourjaya/todo_htmx/dto"
+
+templ Index(todos []*dto.TodoCardDto) {
+	<html lang="en">
+		<head>
+			<meta charset="utf-8"/>
+			<title>Golang Todo</title>
+			<link rel="stylesheet" href="/css/output.css"/>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+			<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+			<script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/multi-swap.js"></script>
+			<script src="https://unpkg.com/htmx-remove@latest" integrity="sha384-v6VOSW2F42qo+95FGFDZCY72+0md5SolbibTa8Kgn8DkCrevZNkgTsWXdEMXyeRX" crossorigin="anonymous">
+</script>
+		</head>
+		<body>
+			<div class="min-h-screen w-screen bg-blue-950 flex flex-col justify-center items-center relative">
+				<div class="min-h-screen w-screen bg-blue-950 flex flex-col justify-center items-center relative max-w-2xl">
+					@common.Typography("header", "TODO-LIST", "mb-12")
+					@components.AddTodoButton()
+					@components.TodoCards(todos)
+					//@common.Input("new-todo")
+				</div>
+			</div>
+		</body>
+	</html>
+}

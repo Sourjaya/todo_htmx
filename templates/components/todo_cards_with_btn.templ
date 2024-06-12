@@ -1,0 +1,8 @@
+package components
+
+import "github.com/Sourjaya/todo_htmx/dto"
+
+templ TodoCardsWithBtn(todos []*dto.TodoCardDto) {
+	@TodoCards(todos)
+	@AddTodoButton()
+}

@@ -1,0 +1,21 @@
+package components
+
+import "github.com/Sourjaya/todo_htmx/dto"
+
+templ View_Todo(todo *dto.TodoCardDto) {
+	<div class="bg-white rounded-2xl w-[50%] h-[40%] my-auto mx-auto absolute inset-0 text-gray-600 p-4 py-8 border-sky-400 border-2" hx-ext="remove">
+		<span
+			data-remove="true"
+			class=" hover:duration-200 hover:opacity-50 top-2 right-2 absolute cursor-pointer material-symbols-outlined justify-item-end"
+		>
+			close
+		</span>
+		<!-- title -->
+		<h1 class="text-1xl text-center text-blue-800 font-bold">
+			TODO
+		</h1>
+		<p class="text-gray-600 text-base my-3 text-left">
+			{ todo.Content }
+		</p>
+	</div>
+}

@@ -1,0 +1,37 @@
+package components
+
+import "github.com/Sourjaya/todo_htmx/templates/common"
+import "github.com/Sourjaya/todo_htmx/dto"
+
+templ TodoCard(todo dto.TodoCardDto) {
+	<div class="p-6 py-3 my-1 flex flex-row items-center w-full gap-4 rounded-2xl border-2 border-blue-950 border-solid" id={ "todo-" + todo.ID }>
+		@common.Typography("normal", todo.Content, "flex-1 text-wrap")
+		<span
+			class="material-symbols-outlined text-blue-900 cursor-pointer hover:opacity-60"
+			hx-get={ "/components?type=view-todo&id=" + todo.ID }
+			hx-trigger="click"
+			hx-swap="afterend"
+			hx-target="#todos"
+		>
+			visibility
+		</span>
+		<span
+			class="material-symbols-outlined text-blue-900 cursor-pointer hover:opacity-60"
+			hx-get={ "/components?type=edit-todo-input&id=" + todo.ID }
+			hx-trigger="click"
+			hx-swap="outerHTML"
+			hx-target={ "#todo-" + todo.ID }
+		>
+			edit_note
+		</span>
+		<span
+			class="material-symbols-outlined text-blue-900 cursor-pointer hover:opacity-60"
+			hx-delete={ "/todos/" + todo.ID }
+			hx-trigger="click"
+			hx-swap="outerHTML"
+			hx-target="#todos"
+		>
+			delete
+		</span>
+	</div>
+}
